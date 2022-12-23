@@ -1,5 +1,5 @@
 
-# Personality Test Flutter
+# Personality-Test-Flutter
 
 This free personality test determines your strengths, talents and traits. Based on Big Five personality theory and lexical analysis.
 
@@ -21,6 +21,7 @@ These traits can be broadly classified into these five (Hence called Big 5 Perso
 ## Screenshots
 
 <p align="center">
+  <img src="/screenshots/6.png" width="30%" />
   <img src="/screenshots/5.png" width="30%" />
   <img src="/screenshots/4.png" width="30%" />
   
