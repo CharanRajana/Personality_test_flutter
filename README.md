@@ -21,11 +21,11 @@ These traits can be broadly classified into these five (Hence called Big 5 Perso
 ## Screenshots
 
 <p align="center">
+  <img src="/screenshots/5.png" width="30%" />
+  <img src="/screenshots/4.png" width="30%" />
+  
+  <img src="/screenshots/3.png" width="30%" />
+  <img src="/screenshots/2.png" width="30%" />
+  
   <img src="/screenshots/1.png" width="30%" />
-  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/2.jpg" width="30%" />
-  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/3.jpg" width="30%" />
-
-  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/4.jpg" width="30%" />
-  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/5.jpg" width="30%" />
-  <img src="./fastlane/metadata/android/en-US/images/phoneScreenshots/6.jpg" width="30%" />
 </p>
