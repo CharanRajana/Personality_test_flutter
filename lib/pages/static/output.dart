@@ -16,7 +16,10 @@ class Output extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                'click here \nto view results \nonce available'.toUpperCase(),
+                ref.read(answerProvider) != ''
+                    ? 'click here \nto view results'.toUpperCase()
+                    : 'No results yet!\n\ntake the test \nto get some insights'
+                        .toUpperCase(),
                 style: const TextStyle(
                   fontSize: 40,
                   letterSpacing: 5,
