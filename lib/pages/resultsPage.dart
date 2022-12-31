@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:personality_app/pages/static/output.dart';
+import 'package:personality_app/extras/widgets.dart';
+import 'package:personality_app/models/databaseRepository.dart';
 import 'package:personality_app/providers/postResponseProvider.dart';
 
 class ResultsPage extends ConsumerWidget {
@@ -9,9 +11,18 @@ class ResultsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Future update(double avg) async {
+      final data = DatabaseService(uid: FirebaseAuth.instance.currentUser!.uid)
+          .userCollections
+          .doc(FirebaseAuth.instance.currentUser!.uid.toString());
+
+      data.update({'score': avg});
+    }
+
     final results = ref.watch(postResponseProvider);
     return results.when(
       data: (data) {
+        update(data.getAvg());
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
@@ -53,16 +64,15 @@ class ResultsPage extends ConsumerWidget {
                               animation: true,
                               animationDuration: 1200,
                               lineWidth: 15.0,
-                              percent: data.getAvg(),
+                              percent: 1.0,
                               center: Text(
-                                "${data.getAvg() * 10}",
+                                (data.getAvg() * 10).toString().substring(0, 3),
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 60.0),
                               ),
                               circularStrokeCap: CircularStrokeCap.butt,
-                              backgroundColor: Colors.purpleAccent,
-                              progressColor: Colors.deepPurple,
+                              progressColor: Colors.purple,
                             ),
                           ),
                         ],
@@ -76,151 +86,12 @@ class ResultsPage extends ConsumerWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          Card(
-                            elevation: 8.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              height: 250,
-                              width: 250,
-                              child: CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: data.agreeableness!,
-                                center: Text(
-                                  "${data.agreeableness! * 100} %",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                                header: const Text(
-                                  "Agreeableness",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                progressColor: Colors.purple,
-                              ),
-                            ),
-                          ),
-                          Card(
-                            elevation: 8.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              height: 250,
-                              width: 250,
-                              child: CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: data.conscientiousness!,
-                                center: Text(
-                                  "${data.conscientiousness! * 100} %",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                                header: const Text(
-                                  "Conscientiousness",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                progressColor: Colors.purple,
-                              ),
-                            ),
-                          ),
-                          Card(
-                            elevation: 8.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              height: 250,
-                              width: 250,
-                              child: CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: data.neuroticism!,
-                                center: Text(
-                                  "${data.neuroticism! * 100} %",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                                header: const Text(
-                                  "Neuroticism",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                progressColor: Colors.purple,
-                              ),
-                            ),
-                          ),
-                          Card(
-                            elevation: 8.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              height: 250,
-                              width: 250,
-                              child: CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: data.openness!,
-                                center: Text(
-                                  "${data.openness! * 100} %",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                                header: const Text(
-                                  "Openness",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                progressColor: Colors.purple,
-                              ),
-                            ),
-                          ),
-                          Card(
-                            elevation: 8.0,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              height: 250,
-                              width: 250,
-                              child: CircularPercentIndicator(
-                                radius: 80.0,
-                                lineWidth: 13.0,
-                                animation: true,
-                                percent: data.extroversion!,
-                                center: Text(
-                                  "${data.extroversion! * 100} %",
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0),
-                                ),
-                                header: const Text(
-                                  "Extroversion",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17.0),
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                progressColor: Colors.purple,
-                              ),
-                            ),
-                          ),
+                          resultCard(data.agreeableness, 'Agreeableness'),
+                          resultCard(
+                              data.conscientiousness, 'Conscientiousness'),
+                          resultCard(data.neuroticism, 'Neuroticism'),
+                          resultCard(data.openness, 'Openness'),
+                          resultCard(data.extroversion, 'Extroversion')
                         ],
                       ),
                     ),
@@ -239,7 +110,9 @@ class ResultsPage extends ConsumerWidget {
         );
       },
       loading: () {
-        return const Output();
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }

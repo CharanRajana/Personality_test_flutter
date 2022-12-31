@@ -2,7 +2,6 @@ import 'package:personality_app/extras/questions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:personality_app/pages/questionPage.dart';
-import 'package:personality_app/providers/postResponseProvider.dart';
 
 class TestPage extends ConsumerStatefulWidget {
   const TestPage({super.key});
@@ -82,7 +81,7 @@ class _TestPageState extends ConsumerState<TestPage> {
           floatingActionButton: currentIndex == 4
               ? FloatingActionButton.extended(
                   onPressed: () {
-                    ref.watch(postResponseProvider);
+                    //ref.watch(postResponseProvider);
                     Navigator.pop(context);
                   },
                   label: const Text('Submit'),

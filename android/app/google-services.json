@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18145213517",
+    "project_id": "personality-app-280ec",
+    "storage_bucket": "personality-app-280ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18145213517:android:215fb246c66aac15f33004",
+        "android_client_info": {
+          "package_name": "com.example.personality_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18145213517-f7in14o73820bbkiclg5el5heii3s3f4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ0L9pE4X0uuzNkZViYGAjY5vkgiZ7sug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18145213517-f7in14o73820bbkiclg5el5heii3s3f4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

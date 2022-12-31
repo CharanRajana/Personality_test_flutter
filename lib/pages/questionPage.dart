@@ -72,7 +72,7 @@ class _QuestionPageState extends State<QuestionPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           ref.read(answerProvider.notifier).state +=
-                              "${input.text} ,";
+                              "${input.text} ";
                         }
                       },
                       child: const Text('Save'),

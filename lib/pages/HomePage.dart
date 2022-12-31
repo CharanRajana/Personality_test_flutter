@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:personality_app/pages/static/chat.dart';
+import 'package:personality_app/pages/static/logout.dart';
 import 'package:personality_app/pages/static/output.dart';
-import 'package:personality_app/pages/static/test.dart';
+import 'package:personality_app/pages/static/entry.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
     const Test(),
     const Output(),
     const Chat(),
+    const LogOut(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,16 +43,20 @@ class _HomePageState extends State<HomePage> {
         }),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.checklist_outlined),
+            icon: Icon(Icons.edit_note_outlined),
             label: 'Test',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.output_rounded),
+            icon: Icon(Icons.query_stats_outlined),
             label: 'Result',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
+            icon: Icon(Icons.chat_outlined),
             label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.exit_to_app_outlined),
+            label: 'LogOut',
           ),
         ],
       ),

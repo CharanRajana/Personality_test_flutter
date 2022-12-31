@@ -24,7 +24,7 @@ class PostResponse {
             openness! +
             neuroticism!) /
         5;
-    return double.parse(avg.toStringAsFixed(2));
+    return avg;
   }
 
   PostResponse copyWith({
@@ -60,20 +60,19 @@ class PostResponse {
     return PostResponse(
       id: map['id'] != null ? map['id'] as String : null,
       extroversion: map['extroversion'] != null
-          ? double.parse(map['extroversion']!.toStringAsFixed(2))
-          : 0.0,
+          ? map['extroversion'] as double
+          : 0.319587333,
       agreeableness: map['agreeableness'] != null
-          ? double.parse(map['agreeableness']!.toStringAsFixed(2))
-          : 0.0,
-      openness: map['openness'] != null
-          ? double.parse(map['openness']!.toStringAsFixed(2))
-          : 0.0,
+          ? map['agreeableness'] as double
+          : 0.319587333,
+      openness:
+          map['openness'] != null ? map['openness'] as double : 0.319587333,
       conscientiousness: map['conscientiousness'] != null
-          ? double.parse(map['conscientiousness']!.toStringAsFixed(2))
-          : 0.0,
+          ? map['conscientiousness'] as double
+          : 0.319587333,
       neuroticism: map['neuroticism'] != null
-          ? double.parse(map['neuroticism']!.toStringAsFixed(2))
-          : 0.0,
+          ? map['neuroticism'] as double
+          : 0.319587333,
     );
   }
 
@@ -84,7 +83,7 @@ class PostResponse {
 
   @override
   String toString() {
-    return 'PostResponse(id: $id, extroversion: $extroversion, agreeableness: $agreeableness, openness: $openness, conscientiousness: $conscientiousness, neuroticism: $neuroticism )';
+    return 'PostResponse(id: $id, extroversion: $extroversion, agreeableness: $agreeableness, openness: $openness, conscientiousness: $conscientiousness, neuroticism: $neuroticism, avg: {$getAvg()})';
   }
 
   @override
